@@ -5,18 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Website</title>
     <link rel="stylesheet" href="css/style.css">
-    <script src="js/script.js"></script>
+    <script src="/js/script.js"></script>
 </head>
 <body>
     <header class="main-header">
         <img src="Assets/Logo_yellowhGhost-copy.png" alt="Logo_yellowhGhost-copy">
 
-        <section class="header-nav">
-            <nav class="header-nav-sub">Home</nav>
-            <nav class="header-nav-sub">Our Profile</nav>
-            <nav class="header-nav-sub">Portofolio</nav>
-            <nav class="header-nav-sub">Message Us</nav>
-        </section>
+        <nav class="header-nav">
+            <a href="" class="header-nav-sub">Home</a>
+            <a href="" class="header-nav-sub">Our Profile</a>
+            <a href="" class="header-nav-sub">Portofolio</a>
+            <a href="" class="header-nav-sub">Message Us</a>
+        </nav>
     </header>
 
     <main>
@@ -26,23 +26,36 @@
         </header>
 
         <section class="slide-image">
-            <div class="imgSlides-fade">
-                <div class="number-text">1 / 3</div>
-                <img src="Assets/slideimage1.jpg" class="imgSlides-fade-sub">
-                <div class="text">Caption Text</div>
+            <div class="slide-image-sub">
+                <div class="imgSlides-fade">
+                    <div class="number-text">1 / 3</div>
+                    <img src="Assets/slideimage1.jpg" class="imgSlides-fade-sub">
+                    <div class="text">Caption Text</div>
+                </div>
+    
+                <div class="imgSlides-fade">
+                    <div class="number-text">2 / 3</div>
+                    <img src="Assets/slideimage2.jpg" class="imgSlides-fade-sub">
+                    <div class="text">Caption Text</div>
+                </div>
+    
+                <div class="imgSlides-fade">
+                    <div class="number-text">3 / 3</div>
+                    <img src="Assets/slideimage3.jpg" class="imgSlides-fade-sub">
+                    <div class="text">Caption Text</div>
+                </div>
+    
+                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                <a class="next" onclick="plusSlides(1)">&#10095;</a>
             </div>
 
-            <div class="imgSlides-fade">
-                <div class="number-text">2 / 3</div>
-                <img src="Assets/slideimage2.jpg" class="imgSlides-fade-sub">
-                <div class="text">Caption Text</div>
-            </div>
-
-            <div class="imgSlides-fade">
-                <div class="number-text">3 / 3</div>
-                <img src="Assets/slideimage3.jpg" class="imgSlides-fade-sub">
-                <div class="text">Caption Text</div>
-            </div>
+            
+            <div style="text-align:center">
+                <span class="dot" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+                <span class="dot" onclick="currentSlide(3)"></span>
+            </div>    
+            
 
         </section>
 
@@ -51,5 +64,34 @@
     <footer>
 
     </footer>
+
+    <script>
+        let slideIndex = 1;
+        showSlides(slideIndex);
+
+        function plusSlides(n) {
+        showSlides(slideIndex += n);
+        }
+
+        function currentSlide(n) {
+        showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("imgSlides-fade");
+            let dots = document.getElementsByClassName("dot");
+            if (n > slides.length) {slideIndex = 1}
+            if (n < 1) {slideIndex = slides.length}
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex-1].style.display = "block";
+            dots[slideIndex-1].className += " active";
+        }
+    </script>
 </body>
 </html>
